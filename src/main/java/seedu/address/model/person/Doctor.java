@@ -29,4 +29,29 @@ public class Doctor extends Person {
     public Yoe getYoe() {
         return yoe;
     }
+
+    /**
+     * Returns String representation of Doctor.
+     * @return String representation of Doctor.
+     */
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getName())
+                .append("; Phone: ")
+                .append(getPhone())
+                .append("; Email: ")
+                .append(getEmail())
+                .append("; Specialty: ")
+                .append(getSpecialty())
+                .append("; Years of Experience: ")
+                .append(getYoe());
+
+        Set<Tag> tags = getTags();
+        if (!tags.isEmpty()) {
+            builder.append("; Tags: ");
+            tags.forEach(builder::append);
+        }
+        return builder.toString();
+    }
 }
