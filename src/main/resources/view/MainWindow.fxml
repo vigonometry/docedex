@@ -7,25 +7,26 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-         title="Docedex" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
+<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="Docedex" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
   <scene>
     <Scene>
       <stylesheets>
-        <URL value="@css/DarkTheme.css" />
         <URL value="@css/Extensions.css" />
+        <URL value="@css/DarkTheme.css" />
       </stylesheets>
 
       <VBox styleClass="background">
-          <MenuBar fx:id="menuBar" VBox.vgrow="NEVER" styleClass="menu-bar">
+          <MenuBar fx:id="menuBar" styleClass="menu-bar" VBox.vgrow="NEVER">
             <Menu mnemonicParsing="false" text="File">
               <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
             </Menu>
@@ -35,34 +36,36 @@
           </MenuBar>
 
           <VBox styleClass="body">
-            <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder">
+            <StackPane fx:id="commandBoxPlaceholder" VBox.vgrow="NEVER">
               <padding>
-                <Insets top="5" right="10" bottom="5" left="10" />
+                <Insets bottom="5" left="10" right="10" top="5" />
               </padding>
             </StackPane>
 
-            <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder"
-                       minHeight="100" prefHeight="100" maxHeight="100">
+            <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" VBox.vgrow="NEVER">
               <padding>
-                <Insets top="5" right="10" bottom="5" left="10" />
+                <Insets bottom="5" left="10" right="10" top="5" />
               </padding>
             </StackPane>
 
-            <GridPane alignment="CENTER_LEFT" hgap="10" vgap="10">
+            <GridPane alignment="CENTER_LEFT" hgap="10" vgap="10" VBox.vgrow="ALWAYS">
               <padding>
-                <Insets top="5" right="10" bottom="5" left="10" />
+                <Insets bottom="5" left="10" right="10" top="5" />
               </padding>
               <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS" minWidth="225" prefWidth="250" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="225.0" prefWidth="250.0" />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
               </columnConstraints>
-              <VBox fx:id="personList" VBox.vgrow="ALWAYS"
-                    GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2">
-                <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              <VBox fx:id="personList" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" VBox.vgrow="ALWAYS">
+                <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
               </VBox>
-              <VBox fx:id="enlargedContactPane" VBox.vgrow="ALWAYS"
-                    GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.columnSpan="1">
+              <VBox fx:id="enlargedContactPane" GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="0" VBox.vgrow="ALWAYS">
                 <StackPane fx:id="enlargedContactCardPlaceholder" VBox.vgrow="ALWAYS" />
               </VBox>
+                  <rowConstraints>
+                     <RowConstraints />
+                  </rowConstraints>
             </GridPane>
           </VBox>
 
