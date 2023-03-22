@@ -21,15 +21,18 @@ import seedu.address.model.person.patient.Patient;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_DOCTOR = "Doctors list contains duplicate doctors(s).";
+    public static final String MESSAGE_DUPLICATE_PATIENT = "Patients list contains duplicate patient(s).";
 
     private final List<JsonAdaptedDoctor> doctors = new ArrayList<>();
+    private final List<JsonAdaptedPatient> patients = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given doctors and patients.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("doctors") List<JsonAdaptedDoctor> doctors) {
+    public JsonSerializableAddressBook(@JsonProperty("doctors") List<JsonAdaptedDoctor> doctors, @JsonProperty("patients") List<JsonAdaptedPatient> patients) {
         this.doctors.addAll(doctors);
+        this.patients.addAll(patients);
     }
 
     /**
@@ -40,6 +43,8 @@ class JsonSerializableAddressBook {
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         doctors.addAll(source.getDoctorList().stream()
                 .map(JsonSerializableAddressBook::convertToJsonAdaptedDoctor).collect(Collectors.toList()));
+        patients.addAll(source.getPatientList().stream()
+                .map(JsonSerializableAddressBook::convertToJsonAdaptedPatient).collect(Collectors.toList()));
     }
 
     /**
@@ -50,6 +55,16 @@ class JsonSerializableAddressBook {
      */
     private static JsonAdaptedDoctor convertToJsonAdaptedDoctor(Doctor doctor) {
         return new JsonAdaptedDoctor(doctor);
+    }
+
+    /**
+     * Converts a given {@code Patient} into a JsonAdaptedPatient.
+     *
+     * @param patient a patient object.
+     * @return a JsonAdaptedPatient.
+     */
+    private static JsonAdaptedPatient convertToJsonAdaptedPatient(Patient patient) {
+        return new JsonAdaptedPatient(patient);
     }
 
     /**
@@ -74,6 +89,13 @@ class JsonSerializableAddressBook {
                     }
                 });
             }
+        }
+        for (JsonAdaptedPatient jsonAdaptedPatient : patients) {
+            Patient patient = jsonAdaptedPatient.toModelType();
+            if (addressBook.hasPatient(patient)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PATIENT);
+            }
+            addressBook.addPatient(patient);
         }
         return addressBook;
     }
