@@ -4,9 +4,7 @@ import static java.time.Duration.ofMillis;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static seedu.address.testutil.TypicalDoctors.getTypicalDoctors;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static seedu.address.ui.testutil.GuiTestAssert.assertCardDisplaysDoctor;
-import static seedu.address.ui.testutil.GuiTestAssert.assertDoctorCardEquals;
 
 import java.io.File;
 import java.util.Collections;

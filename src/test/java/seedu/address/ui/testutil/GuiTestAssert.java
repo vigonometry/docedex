@@ -2,7 +2,6 @@ package seedu.address.ui.testutil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import guitests.guihandles.DoctorCardHandle;
@@ -44,7 +43,8 @@ public class GuiTestAssert {
     /**
      * Asserts that {@code actualPatientCard} displays the same values as {@code expectedPatientCard}.
      */
-    public static void assertPatientCardEquals(PatientCardHandle expectedPatientCard, PatientCardHandle actualPatientCard) {
+    public static void assertPatientCardEquals(PatientCardHandle expectedPatientCard,
+                                               PatientCardHandle actualPatientCard) {
         assertEquals(expectedPatientCard.getId(), actualPatientCard.getId());
         assertEquals(expectedPatientCard.getEmail(), actualPatientCard.getEmail());
         assertEquals(expectedPatientCard.getName(), actualPatientCard.getName());
@@ -86,22 +86,6 @@ public class GuiTestAssert {
         }
     }
 
-    /**
-     * Asserts that the list in {@code doctorListPanelHandle} displays the details of {@code doctors} correctly and
-     * in the correct order.
-     */
-    public static void assertDoctorListMatching(DoctorListPanelHandle doctorListPanelHandle, List<Doctor> doctors) {
-        assertDoctorListMatching(doctorListPanelHandle, doctors.toArray(new Doctor[0]));
-    }
-
-    /**
-     * Asserts that the list in {@code patientListPanelHandle} displays the details of {@code patients} correctly and
-     * in the correct order.
-     */
-
-    public static void assertPatientListMatching(PatientListPanelHandle patientListPanelHandle, List<Patient> patients) {
-        assertPatientListMatching(patientListPanelHandle, patients.toArray(new Patient[0]));
-    }
 
     /**
      * Asserts the size of the list in {@code doctorListPanelHandle} equals to {@code size}.
