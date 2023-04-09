@@ -85,4 +85,8 @@ public class UiManager implements Ui {
         System.exit(1);
     }
 
+    public static String getAlertDialogPaneFieldId() {
+        return ALERT_DIALOG_PANE_FIELD_ID;
+    }
+
 }
