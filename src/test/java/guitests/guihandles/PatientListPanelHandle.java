@@ -80,6 +80,10 @@ public class PatientListPanelHandle extends NodeHandle<ListView<Patient>> {
      * Navigates the listview to {@code index}.
      */
     public void navigateToCard(int index) {
+        if (index == 0) {
+            guiRobot.pauseForHuman();
+            return;
+        }
         if (index < 0 || index >= getRootNode().getItems().size()) {
             throw new IllegalArgumentException("Index is out of bounds.");
         }

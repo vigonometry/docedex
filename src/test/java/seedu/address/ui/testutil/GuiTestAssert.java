@@ -2,6 +2,7 @@ package seedu.address.ui.testutil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import guitests.guihandles.DoctorCardHandle;
@@ -76,14 +77,31 @@ public class GuiTestAssert {
     }
 
     /**
+     * Asserts that the list in {@code doctorListPanelHandle} displays the details of {@code doctors} correctly and
+     * in the correct order.
+     */
+    public static void assertDoctorListMatching(DoctorListPanelHandle doctorListPanelHandle, List<Doctor> doctors) {
+        assertDoctorListMatching(doctorListPanelHandle, doctors.toArray(new Doctor[0]));
+    }
+
+    /**
      * Asserts that the list in {@code patientListPanelHandle} displays the details of {@code patients} correctly and
      * in the correct order.
      */
     public static void assertPatientListMatching(PatientListPanelHandle patientListPanelHandle, Patient... patients) {
+        if (patients.length != patientListPanelHandle.getListSize())
         for (int i = 0; i < patients.length; i++) {
             patientListPanelHandle.navigateToCard(i);
             assertCardDisplaysPatient(patients[i], patientListPanelHandle.getPatientCardHandle(i));
         }
+    }
+
+    /**
+     * Asserts that the list in {@code patientListPanelHandle} displays the details of {@code patients} correctly and
+     * in the correct order.
+     */
+    public static void assertPatientListMatching(PatientListPanelHandle patientListPanelHandle, List<Patient> patients) {
+        assertPatientListMatching(patientListPanelHandle, patients.toArray(new Patient[0]));
     }
 
 
