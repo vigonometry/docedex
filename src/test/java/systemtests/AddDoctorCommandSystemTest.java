@@ -62,7 +62,8 @@ public class AddDoctorCommandSystemTest extends AddressBookSystemTest {
 
         /* Case: add a person with tags, command with parameters in random order -> added */
         toAdd = BOB;
-        command = AddDoctorCommand.COMMAND_WORD + TAG_DESC_FRIEND + YOE_DESC_BOB + PHONE_DESC_BOB + SPECIALTY_DESC_BOB + NAME_DESC_BOB
+        command = AddDoctorCommand.COMMAND_WORD + TAG_DESC_FRIEND + YOE_DESC_BOB + PHONE_DESC_BOB + SPECIALTY_DESC_BOB
+                + NAME_DESC_BOB
                 + TAG_DESC_HUSBAND + EMAIL_DESC_BOB;
         assertCommandSuccess(command, toAdd);
 
@@ -89,24 +90,34 @@ public class AddDoctorCommandSystemTest extends AddressBookSystemTest {
 
 
         /* Case: missing name -> rejected */
-        command = AddDoctorCommand.COMMAND_WORD + PHONE_DESC_AMY + EMAIL_DESC_AMY + SPECIALTY_DESC_AMY + YOE_DESC_AMY + TAG_DESC_FRIEND;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddDoctorCommand.getCommandUsage()));
+        command = AddDoctorCommand.COMMAND_WORD + PHONE_DESC_AMY + EMAIL_DESC_AMY + SPECIALTY_DESC_AMY
+                + YOE_DESC_AMY + TAG_DESC_FRIEND;
+        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddDoctorCommand.getCommandUsage()));
 
         /* Case: missing phone -> rejected */
-        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + EMAIL_DESC_AMY + SPECIALTY_DESC_AMY + YOE_DESC_AMY + TAG_DESC_FRIEND;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddDoctorCommand.getCommandUsage()));
+        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + EMAIL_DESC_AMY + SPECIALTY_DESC_AMY
+                + YOE_DESC_AMY + TAG_DESC_FRIEND;
+        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddDoctorCommand.getCommandUsage()));
 
         /* Case: missing email -> rejected */
-        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + SPECIALTY_DESC_AMY + YOE_DESC_AMY + TAG_DESC_FRIEND;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddDoctorCommand.getCommandUsage()));
+        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + SPECIALTY_DESC_AMY
+                + YOE_DESC_AMY + TAG_DESC_FRIEND;
+        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddDoctorCommand.getCommandUsage()));
 
         /* Case: missing specialty -> rejected */
-        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + YOE_DESC_AMY + TAG_DESC_FRIEND;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddDoctorCommand.getCommandUsage()));
+        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + YOE_DESC_AMY + TAG_DESC_FRIEND;
+        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddDoctorCommand.getCommandUsage()));
 
         /* Case: missing years of experience -> rejected */
-        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + SPECIALTY_DESC_AMY + TAG_DESC_FRIEND;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddDoctorCommand.getCommandUsage()));
+        command = AddDoctorCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
+                + SPECIALTY_DESC_AMY + TAG_DESC_FRIEND;
+        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddDoctorCommand.getCommandUsage()));
 
         /* Case: invalid keyword -> rejected */
         command = "add--dOC " + DoctorUtil.getDoctorDetails(toAdd);

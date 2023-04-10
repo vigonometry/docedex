@@ -28,6 +28,13 @@ public class TestApp extends MainApp {
     private Path saveFileLocation;
     private Path prefFileLocation;
 
+    /**
+     * Creates a {@code TestApp} with the given {@code initialDataSupplier}, {@code saveFileLocation} and
+     * {@code prefFileLocation}.
+     * @param initialDataSupplier
+     * @param saveFileLocation
+     * @param prefFileLocation
+     */
     public TestApp(Supplier<ReadOnlyAddressBook> initialDataSupplier, Path saveFileLocation, Path prefFileLocation) {
         super();
         this.initialDataSupplier = initialDataSupplier;

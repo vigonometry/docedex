@@ -5,6 +5,9 @@ import guitests.GuiRobot;
 import javafx.stage.Stage;
 import seedu.address.ui.HelpWindow;
 
+/**
+ * A handler for the {@code HelpWindow} of the UI.
+ */
 public class HelpWindowHandle extends StageHandle {
 
     private static final String HELP_WINDOW_TITLE = "Help";

@@ -89,7 +89,6 @@ public class GuiTestAssert {
      * in the correct order.
      */
     public static void assertPatientListMatching(PatientListPanelHandle patientListPanelHandle, Patient... patients) {
-        if (patients.length != patientListPanelHandle.getListSize())
         for (int i = 0; i < patients.length; i++) {
             patientListPanelHandle.navigateToCard(i);
             assertCardDisplaysPatient(patients[i], patientListPanelHandle.getPatientCardHandle(i));
@@ -100,7 +99,8 @@ public class GuiTestAssert {
      * Asserts that the list in {@code patientListPanelHandle} displays the details of {@code patients} correctly and
      * in the correct order.
      */
-    public static void assertPatientListMatching(PatientListPanelHandle patientListPanelHandle, List<Patient> patients) {
+    public static void assertPatientListMatching(PatientListPanelHandle patientListPanelHandle,
+                                                 List<Patient> patients) {
         assertPatientListMatching(patientListPanelHandle, patients.toArray(new Patient[0]));
     }
 

@@ -6,23 +6,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.ui.testutil.GuiTestAssert.assertDoctorListMatching;
 import static seedu.address.ui.testutil.GuiTestAssert.assertPatientListMatching;
 
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.RegisterExtension;
 
 import guitests.guihandles.CommandBoxHandle;
+import guitests.guihandles.DoctorListPanelHandle;
 import guitests.guihandles.MainMenuHandle;
 import guitests.guihandles.MainWindowHandle;
-import guitests.guihandles.DoctorListPanelHandle;
 import guitests.guihandles.PatientListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
 import guitests.guihandles.StatusBarFooterHandle;
@@ -34,13 +30,10 @@ import seedu.address.logic.commands.FindPatientCommand;
 import seedu.address.logic.commands.ListDoctorCommand;
 import seedu.address.logic.commands.ListPatientCommand;
 import seedu.address.logic.commands.SelectDoctorCommand;
-import seedu.address.logic.commands.SelectPatientCommand;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
-import seedu.address.model.person.doctor.Doctor;
 import seedu.address.testutil.TestUtil;
 import seedu.address.testutil.TypicalDoctors;
-import seedu.address.testutil.TypicalPatients;
 import seedu.address.ui.CommandBox;
 
 /**

@@ -50,7 +50,8 @@ public class DoctorUtil {
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.getValue()).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.getValue()).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.getValue()).append(" "));
-        descriptor.getSpecialty().ifPresent(specialty -> sb.append(PREFIX_SPECIALTY).append(specialty.getValue()).append(" "));
+        descriptor.getSpecialty().ifPresent(specialty -> sb.append(PREFIX_SPECIALTY)
+                .append(specialty.getValue()).append(" "));
         descriptor.getYoe().ifPresent(yoe -> sb.append(PREFIX_YOE).append(yoe.getValue()).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
