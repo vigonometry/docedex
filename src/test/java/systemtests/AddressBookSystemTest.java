@@ -182,7 +182,7 @@ public abstract class AddressBookSystemTest {
     }
 
     /**
-     * Deletes all persons in the address book.
+     * Deletes all doctors in the address book.
      */
     protected void deleteAllDoctors() {
         executeCommand(ClearCommand.COMMAND_WORD);
@@ -191,7 +191,7 @@ public abstract class AddressBookSystemTest {
 
 
     /**
-     * Deletes all persons in the address book.
+     * Deletes all patients in the address book.
      */
     protected void deleteAllPatients() {
         executeCommand(ClearCommand.COMMAND_WORD);
@@ -200,19 +200,19 @@ public abstract class AddressBookSystemTest {
 
     /**
      * Asserts that the {@code CommandBox} displays {@code expectedCommandInput}, the {@code ResultDisplay} displays
-     * {@code expectedResultMessage}, the storage contains the same person objects as {@code expectedModel}
-     * and the person list panel displays the persons in the model correctly.
+     * {@code expectedResultMessage}, the storage contains the same doctor/patient objects as {@code expectedModel}
+     * and the doctor/patient list panel displays the doctors/patients in the model correctly.
      */
     protected void assertApplicationDisplaysExpected(String expectedCommandInput, String expectedResultMessage,
                                                      Model expectedModel) {
         assertEquals(expectedCommandInput, getCommandBox().getInput());
         assertEquals(expectedResultMessage, getResultDisplay().getText());
         assertEquals(new AddressBook(expectedModel.getAddressBook()), testApp.readStorageAddressBook());
-        assertDoctorListMatching(getDoctorListPanel(), expectedModel.getFilteredDoctorList());;
+        assertDoctorListMatching(getDoctorListPanel(), expectedModel.getFilteredDoctorList());
     }
 
     /**
-     * Calls {@code BrowserPanelHandle}, {@code PersonListPanelHandle} and {@code StatusBarFooterHandle} to remember
+     * Calls {@code BrowserPanelHandle}, {@code DoctorListPanelHandle}, {@code PatientListPanelHandle} and {@code StatusBarFooterHandle} to remember
      * their current state.
      */
     private void rememberStates() {

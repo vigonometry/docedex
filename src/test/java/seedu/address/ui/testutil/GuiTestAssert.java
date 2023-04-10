@@ -10,7 +10,6 @@ import guitests.guihandles.DoctorListPanelHandle;
 import guitests.guihandles.PatientCardHandle;
 import guitests.guihandles.PatientListPanelHandle;
 import guitests.guihandles.ResultDisplayHandle;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.doctor.Doctor;
 import seedu.address.model.person.patient.Patient;
 import seedu.address.model.tag.Tag;
@@ -56,7 +55,7 @@ public class GuiTestAssert {
     /**
      * Asserts that {@code actualPatientCard} displays the details of {@code expectedPatient}.
      */
-    public static void assertCardDisplaysPatient(Person expectedPatient, PatientCardHandle actualPatientCard) {
+    public static void assertCardDisplaysPatient(Patient expectedPatient, PatientCardHandle actualPatientCard) {
         assertEquals(expectedPatient.getName().getValue(), actualPatientCard.getName());
         assertEquals(expectedPatient.getPhone().getValue(), actualPatientCard.getPhone());
         assertEquals(expectedPatient.getEmail().getValue(), actualPatientCard.getEmail());

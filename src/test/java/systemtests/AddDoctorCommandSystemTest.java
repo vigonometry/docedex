@@ -40,7 +40,7 @@ public class AddDoctorCommandSystemTest extends AddressBookSystemTest {
 
         /* ------------------------ Perform add operations on the shown unfiltered list ----------------------------- */
 
-        /* Case: add a person without tags to a non-empty address book, command with leading spaces and trailing spaces
+        /* Case: add a doctor without tags to a non-empty address book, command with leading spaces and trailing spaces
          * -> added
          */
         Doctor toAdd = AMY;
@@ -49,7 +49,7 @@ public class AddDoctorCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, toAdd);
 
 
-        /* Case: add a person with all fields same as another person in the address book except name -> added */
+        /* Case: add a doctor with all fields same as another doctor in the address book except name -> added */
         toAdd = new DoctorBuilder(AMY).withName(VALID_NAME_BOB).build();
         command = AddDoctorCommand.COMMAND_WORD + " " + NAME_DESC_BOB + " " + PHONE_DESC_AMY + " "
                 + EMAIL_DESC_AMY + " " + SPECIALTY_DESC_AMY + " " + YOE_DESC_AMY + " " + TAG_DESC_FRIEND + " ";
@@ -60,23 +60,23 @@ public class AddDoctorCommandSystemTest extends AddressBookSystemTest {
         deleteAllDoctors();
         assertCommandSuccess(ALICE);
 
-        /* Case: add a person with tags, command with parameters in random order -> added */
+        /* Case: add a doctor with tags, command with parameters in random order -> added */
         toAdd = BOB;
         command = AddDoctorCommand.COMMAND_WORD + TAG_DESC_FRIEND + YOE_DESC_BOB + PHONE_DESC_BOB + SPECIALTY_DESC_BOB
                 + NAME_DESC_BOB
                 + TAG_DESC_HUSBAND + EMAIL_DESC_BOB;
         assertCommandSuccess(command, toAdd);
 
-        /* Case: add a person, missing tags -> added */
+        /* Case: add a doctor, missing tags -> added */
         assertCommandSuccess(ELLA);
 
         /* -------------------------- Perform add operation on the shown filtered list ------------------------------ */
 
-        /* Case: filters the person list before adding -> added */
+        /* Case: filters the doctor list before adding -> added */
         showDoctorsWithName(KEYWORD_MATCHING_MEIER);
         assertCommandSuccess(FIONA);
 
-        /* ------------------------ Perform add operation while a person card is selected --------------------------- */
+        /* ------------------------ Perform add operation while a doctor card is selected --------------------------- */
 
         /* Case: selects first card in the doctors list, add a doctor -> added */
         selectDoctor(Index.fromOneBased(1));
@@ -84,7 +84,7 @@ public class AddDoctorCommandSystemTest extends AddressBookSystemTest {
 
         /* ----------------------------------- Perform invalid add operations --------------------------------------- */
 
-        /* Case: add a duplicate person -> rejected */
+        /* Case: add a duplicate doctor -> rejected */
         command = DoctorUtil.getAddDoctorCommand(ELLA);
         assertCommandFailure(command, AddDoctorCommand.getMessageDuplicateDoctor());
 
@@ -148,7 +148,7 @@ public class AddDoctorCommandSystemTest extends AddressBookSystemTest {
      * 1. Command box displays {@code command}.<br>
      * 2. Command box has the error style class.<br>
      * 3. Result display box displays {@code expectedResultMessage}.<br>
-     * 4. {@code Storage} and {@code PersonListPanel} remain unchanged.<br>
+     * 4. {@code Storage} and {@code DoctorListPanel} remain unchanged.<br>
      * 5. Browser url, selected card and status bar remain unchanged.<br>
      * Verifications 1, 3 and 4 are performed by
      * {@code AddressBookSystemTest#assertApplicationDisplaysExpected(String, String, Model)}.<br>
